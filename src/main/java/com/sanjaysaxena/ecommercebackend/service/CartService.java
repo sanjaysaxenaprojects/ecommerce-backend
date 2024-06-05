@@ -18,9 +18,11 @@ public class CartService {
 
     public AddToCartResponse addItem(AddToCartRequest request) {
         Cart addToCart = new Cart();
-        addToCart.setCartItemId(request.getProductId());
+        addToCart.setCartItemId(request.getCartItemId());
+        addToCart.setProductId(request.getProductId());
+        addToCart.setQuantity(request.getQuantity());
         Cart cart = cartRepository.save(addToCart);
-        return AddToCartResponse.builder().cartItemId(cart.getCartItemId()).message("Working").build();
+        return AddToCartResponse.builder().cartItemId(cart.getCartItemId()).message("Added Successfully!").build();
     }
 
     public List<Cart> getItem() {

@@ -17,11 +17,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @GetMapping("/hi")
-    public String hi(){
-        return "Working";
-    }
-
     @PostMapping("/cart/items")
     public AddToCartResponse addItem(@RequestBody AddToCartRequest request){
         return cartService.addItem(request);
