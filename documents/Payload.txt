@@ -1,0 +1,80 @@
+Cart Service
+
+1. Create a Cart Item (Add to Cart)
+    - Request Payload:
+        - HTTP Method: POST
+        - Endpoint: `/api/cart/items`
+        - Body (JSON):
+            
+            {
+                "productId": "12345",
+                "quantity": 2
+            }
+            
+        - Description: Add a product with ID "12345" to the user's cart, specifying the desired quantity.
+    - Response Payload:
+        - HTTP Status: 201 Created (or appropriate status)
+        - Body (JSON):
+            
+            {
+                "message": "Product added to cart successfully",
+                "cartItemId": "abc123"
+            }
+            
+        - Description: Confirmation message along with the newly created cart item ID.
+
+2. Get Cart Items
+    - Request Payload:
+        - HTTP Method: GET
+        - Endpoint: `/api/cart/items`
+        - Description: Retrieve all items in the user's cart.
+    - Response Payload:
+        - HTTP Status: 200 OK
+        - Body (JSON):
+            
+            {
+                "items": [
+                    {
+                        "cartItemId": "abc123",
+                        "productId": "12345",
+                        "quantity": 2
+                    },
+                    {
+                        "cartItemId": "def456",
+                        "productId": "67890",
+                        "quantity": 1
+                    }
+                ]
+            }
+            
+        - Description: List of cart items with their details.
+
+3. Update Cart Item Quantity
+    - Request Payload:
+        - HTTP Method: PUT
+        - Endpoint: `/api/cart/items/{cartItemId}`
+        - Body (JSON):
+            
+            {
+                "quantity": 3
+            }
+            
+        - Description: Update the quantity of the cart item with the specified `cartItemId`.
+    - Response Payload:
+        - HTTP Status: 200 OK
+        - Body (JSON):
+            
+            {
+                "message": "Cart item quantity updated successfully"
+            }
+            
+        - Description: Confirmation message.
+
+4. Remove Cart Item
+    - Request Payload:
+        - HTTP Method: DELETE
+        - Endpoint: `/api/cart/items/{cartItemId}`
+        - Description: Remove the cart item with the specified `cartItemId`.
+    - Response Payload:
+        - HTTP Status: 204 No Content (or appropriate status)
+        - Description: No response body; item removed from the cart.
